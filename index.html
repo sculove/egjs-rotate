@@ -21,10 +21,20 @@
 	<script src="release/latest/dist/rotate.min.js"></script>
 
 <script>
+	var homeUrl = window.location.href;
+	if (homeUrl.indexOf("#") !== -1) {
+		homeUrl = homeUrl.substr(0, homeUrl.indexOf("#"));
+	}
+	homeUrl = homeUrl
+		.replace("/index.html", "/")
+		.replace("/gallery.html", "/");
+	if (homeUrl[homeUrl.length-1] !== "/") {
+		homeUrl += "/";
+	};
+	window.HOMELINK = homeUrl;
 	window.LIBLINK = [];
 	
-	window.LIBLINK.push(window.location.href.replace("/index.html", "/")
-            .replace("/gallery.html", "/") + "release/latest/dist/rotate.min.js");
+	window.LIBLINK.push(window.HOMELINK + "release/latest/dist/rotate.min.js");
 	
 </script>
 <body>
@@ -134,7 +144,7 @@
 			</div>
 		</div>
 	</section>
-	<!--<section id="docs" class="docs section demos">
+	<section id="docs" class="docs section demos">
 		<div class="container">
 			<div class="docs-inner">
 				<h2 class="title text-center">Demos</h2>
@@ -143,7 +153,7 @@
 
 			</div>
 		</div>
-	</section>-->
+	</section>
 </div>
     <!-- ******FOOTER****** -->
     <footer class="footer">
